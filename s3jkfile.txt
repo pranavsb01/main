@@ -3,11 +3,13 @@ pipeline {
     tools {
         maven 'maven'
     }
+    /*
     environment {
         AWS_ACCESS_KEY_ID = credentials('aws-id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-key')
-        AWS_DEFAULT_REGION = 'us-west-2'    
+        AWS_SECRET_ACCESS_KEY = credentials('pqr')
+        AWS_DEFAULT_REGION = 'us-east-2'    
     }
+    */
     
     stages {
         stage('Checkout Code') {
@@ -31,7 +33,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
+        /*
         stage('s3 Upload') {
             steps {
                 echo "4444"
@@ -40,7 +42,8 @@ pipeline {
                 sh 'aws s3 cp target/devops-app-1.0-SNAPSHOT.jar s3://s3-cbz-test/'
             }
         }
-        
+        */
+        /*
         stage('SonarQube Analysis') {
             environment {
                 SONAR_HOST_URL = 'http://35.92.132.18:9000' // Replace with your SonarQube URL
@@ -51,5 +54,7 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.projectKey=maven_sonar -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN'
             }
         }
+        */
     }
+
 }
